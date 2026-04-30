@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Katja — Frizerski Salon Novi Sad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&family=Yanone+Kaffeesatz:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* ── NEW THEME PALETTE BASED ON BUSINESS CARD ── */
+  --black: #1A1A1A;
+  --white: #FFFFFF;
+  --off-white: #F8F9FA;
+  --orange: #E05A3D; /* Matched to the card's orange block */
+  --orange-light: #FCEFEA;
+  --gray: #555555;
+  --light-gray: #EAEAEA;
+  --border: 1px solid var(--light-gray);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--orange);
+  padding: .6rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.ticker-inner {
+  display: inline-flex;
+  animation: ticker 30s linear infinite;
+}
+.ticker-item {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  padding: 0 2rem;
+}
+.ticker-dot {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0 .5rem;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 2.3rem; /* Height of ticker */
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: var(--border);
+  padding: 0 3rem;
+  height: 5rem;
+}
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo-top {
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-left: 0.1rem;
+}
+.nav-logo-main {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 2.2rem;
+  color: var(--black);
+  font-weight: 400;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--orange); }
+.nav-cta {
+  background: var(--white);
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  padding: 0.6rem 1.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s;
+}
+.nav-cta:hover { background: var(--orange); color: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 7.3rem);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--white);
+}
+
+.hero-left {
+  padding: 6rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-orange-badge {
+  background: var(--orange);
+  color: var(--white);
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
+  align-self: flex-start;
+  opacity: 0;
+  animation: fadeUp .8s ease forwards .2s;
+}
+
+.hero-logo-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp .8s ease forwards .4s;
+}
+.hl-creative {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  margin-left: 0.5rem;
+  margin-bottom: -1.5rem;
+}
+.hl-katja {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: clamp(8rem, 15vw, 16rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--black);
+  letter-spacing: 0.02em;
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--gray);
+  max-width: 400px;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp .8s ease forwards .6s;
+}
+
+.hero-btn {
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  padding: 1rem 2.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform .3s, background .3s, box-shadow .3s;
+  box-shadow: 0 4px 15px rgba(224, 90, 61, 0.2);
+  align-self: flex-start;
+  opacity: 0;
+  animation: fadeUp .8s ease forwards .8s;
+}
+.hero-btn:hover { 
+  transform: translateY(-2px);
+  background: #C84B31;
+  box-shadow: 0 6px 20px rgba(224, 90, 61, 0.3);
+}
+
+.hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--off-white);
+  overflow: hidden;
+}
+
+/* Recreating the fine line-art hair background from the business card */
+.hair-lines-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150%;
+  height: 150%;
+  opacity: 0.15;
+  pointer-events: none;
+  transform: translate(10%, -10%);
+}
+.hair-lines-bg path {
+  fill: none;
+  stroke: var(--black);
+  stroke-width: 1px;
+}
+
+.hero-card {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  border-top: 4px solid var(--orange);
+  opacity: 0;
+  animation: fadeUp .8s ease forwards 1s;
+}
+.hc-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+.hc-detail { font-size: 0.85rem; color: var(--gray); margin-bottom: 0.3rem; }
+.hc-social { 
+  margin-top: 1.5rem; 
+  font-size: 0.85rem; 
+  font-weight: 600; 
+  color: var(--orange); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
+}
+
+/* ── SERVICES ── */
+.services {
+  padding: 6rem 4rem;
+  background: var(--white);
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.sh-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 1rem;
+  display: block;
+}
+.sh-title {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--black);
+  line-height: 1;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.svc {
+  padding: 3rem 2.5rem;
+  background: var(--off-white);
+  border-radius: 4px;
+  transition: transform .3s, box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+}
+.svc:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+  background: var(--white);
+  border: var(--border);
+}
+
+.svc::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s ease;
+}
+.svc:hover::after { transform: scaleX(1); }
+
+.svc-icon {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.svc-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+.svc-desc {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+.svc-price {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 1.5rem;
+  color: var(--orange);
+  position: absolute;
+  bottom: 2.5rem;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  padding: 6rem 4rem;
+  background: var(--orange-light);
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.testi-card {
+  background: var(--white);
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(224, 90, 61, 0.05);
+}
+
+.testi-stars-row { color: var(--orange); font-size: 1rem; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+
+.testi-text {
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.testi-avatar {
+  width: 40px; height: 40px;
+  background: var(--orange);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600;
+}
+.testi-name { font-size: 0.9rem; font-weight: 600; color: var(--black); }
+
+/* ── CONTACT ── */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  min-height: 80vh;
+}
+.contact-left {
+  background: var(--black);
+  color: var(--white);
+  padding: 6rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-left .sh-label { color: var(--orange); }
+.contact-left .sh-title { color: var(--white); text-align: left; margin-bottom: 3rem; }
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.contact-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.ci-lbl {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.ci-val {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.ci-val a {
+  color: var(--white);
+  text-decoration: none;
+  transition: color .3s;
+}
+.ci-val a:hover { color: var(--orange); }
+
+.contact-right {
+  padding: 6rem 4rem;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cform { display: flex; flex-direction: column; gap: 2rem; max-width: 500px; margin: 0 auto; width: 100%;}
+
+.cfield { display: flex; flex-direction: column; gap: 0.5rem; }
+.cfield label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--black);
+}
+.cfield input,
+.cfield textarea,
+.cfield select {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--light-gray);
+  padding: 0.5rem 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: var(--black);
+  outline: none;
+  transition: border-color .3s;
+  resize: none;
+}
+.cfield input:focus,
+.cfield textarea:focus,
+.cfield select:focus { border-bottom-color: var(--orange); }
+.cfield input::placeholder,
+.cfield textarea::placeholder { color: #A0A0A0; font-weight: 300; }
+
+.csubmit {
+  background: var(--orange);
+  color: var(--white);
+  border: none;
+  padding: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background .3s;
+  width: 100%;
+}
+.csubmit:hover { background: var(--black); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--off-white);
+  border-top: var(--border);
+  padding: 3rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 1.8rem;
+  color: var(--black);
+}
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--orange); }
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 4rem 1.5rem; align-items: center; text-align: center; }
+  .hero-orange-badge { align-self: center; }
+  .hl-creative { margin-left: 0; }
+  .hero-tagline { margin: 0 auto 3rem auto; }
+  .hero-btn { align-self: center; }
+  .hero-right { padding: 4rem 1.5rem; }
+  .services { padding: 4rem 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .testimonials { padding: 4rem 1.5rem; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; }
+  .contact-left, .contact-right { padding: 4rem 1.5rem; }
+  footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Frizerski Salon Creative Katja</span><span class="ticker-dot">|</span>
+    <span class="ticker-item">Novi Sad</span><span class="ticker-dot">|</span>
+    <span class="ticker-item">Katja Kalaba</span><span class="ticker-dot">|</span>
+    <span class="ticker-item">064 138 24 74</span><span class="ticker-dot">|</span>
+    <span class="ticker-item">Frizerski Salon Creative Katja</span><span class="ticker-dot">|</span>
+    <span class="ticker-item">Novi Sad</span><span class="ticker-dot">|</span>
+    <span class="ticker-item">Katja Kalaba</span><span class="ticker-dot">|</span>
+    <span class="ticker-item">064 138 24 74</span><span class="ticker-dot">|</span>
+  </div>
+</div>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-top">Creative</span>
+    <span class="nav-logo-main">Katja</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Usluge</a></li>
+    <li><a href="#testimonials">Utisci</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Zakaži</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-orange-badge">FRIZERSKI SALON</div>
+
+    <div class="hero-logo-box">
+      <span class="hl-creative">CREATIVE</span>
+      <h1 class="hl-katja">Katja</h1>
+    </div>
+
+    <p class="hero-tagline">
+      Jedinstven pristup vašoj kosi. Frizerski salon u Novom Sadu posvećen kreativnosti i savršenom izgledu.
+    </p>
+
+    <a href="#contact" class="hero-btn">Zakažite termin</a>
+  </div>
+
+  <div class="hero-right">
+    <svg class="hair-lines-bg" viewBox="0 0 500 500" preserveAspectRatio="none">
+      <path d="M0,0 Q150,200 300,100 T500,400" />
+      <path d="M0,20 Q160,220 310,120 T500,420" />
+      <path d="M0,40 Q170,240 320,140 T500,440" />
+      <path d="M0,60 Q180,260 330,160 T500,460" />
+      <path d="M0,80 Q190,280 340,180 T500,480" />
+      <path d="M0,100 Q200,300 350,200 T500,500" />
+      
+      <path d="M0,150 Q100,50 250,250 T500,100" />
+      <path d="M0,170 Q110,70 260,270 T500,120" />
+      <path d="M0,190 Q120,90 270,290 T500,140" />
+      <path d="M0,210 Q130,110 280,310 T500,160" />
+      <path d="M0,230 Q140,130 290,330 T500,180" />
+    </svg>
+
+    <div class="hero-card">
+      <p class="hc-name">Katja Kalaba</p>
+      <p class="hc-detail">ul. Petefi Šandora 86</p>
+      <p class="hc-detail">21000 Novi Sad</p>
+      <p class="hc-detail">064 138 24 74</p>
+      <a href="https://www.instagram.com/katjusha_creative/" target="_blank" style="text-decoration:none;">
+        <div class="hc-social">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          katjusha_creative
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-head reveal">
+    <span class="sh-label">Šta radimo</span>
+    <h2 class="sh-title">USLUGE</h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="svc reveal">
+      <span class="svc-icon">✂️</span>
+      <h3 class="svc-name">Šišanje & Oblikovanje</h3>
+      <p class="svc-desc">Precizni rezovi za sve tipove kose. Svaki rez je prilagođen obliku vašeg lica i ličnom stilu.</p>
+      <span class="svc-price">OD 1.500 RSD</span>
+    </div>
+
+    <div class="svc reveal">
+      <span class="svc-icon">🎨</span>
+      <h3 class="svc-name">Bojenje & Pramenovi</h3>
+      <p class="svc-desc">Cela boja, highlights, balayage ili ombre — tehnike koje daju dubinu i karakter vašoj kosi.</p>
+      <span class="svc-price">OD 3.500 RSD</span>
+    </div>
+
+    <div class="svc reveal">
+      <span class="svc-icon">💆</span>
+      <h3 class="svc-name">Nega & Tretmani</h3>
+      <p class="svc-desc">Dubinska hidratacija i obnova oštećene kose. Vraćamo zdrav sjaj i život vašoj kosi.</p>
+      <span class="svc-price">OD 2.500 RSD</span>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-head reveal">
+    <span class="sh-label">Iskustva</span>
+    <h2 class="sh-title">UTISCI</h2>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars-row">★★★★★</div>
+      <p class="testi-text">"Katja je magičarka s makazama. Rekla sam joj samo grubo šta hoću i rezultat je bio iznad svih očekivanja."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">D</div>
+        <p class="testi-name">Dragana P.</p>
+      </div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="testi-stars-row">★★★★★</div>
+      <p class="testi-text">"Konačno sam pronašla frizera koji razume šta hoću. Promenila je moj izgled i samopouzdanje. Uvek odlazim srećna."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <p class="testi-name">Maja R.</p>
+      </div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="testi-stars-row">★★★★★</div>
+      <p class="testi-text">"Svaki put je isti nivo posvećenosti, pažnje i preciznosti. Preporučujem svima koji žele pravog profesionalca."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">J</div>
+        <p class="testi-name">Jovana S.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <span class="sh-label">Pronađite nas</span>
+    <h2 class="sh-title">KONTAKT</h2>
+
+    <div class="contact-info-list">
+      <div class="contact-info-item reveal">
+        <span class="ci-lbl">Adresa</span>
+        <span class="ci-val">
+          ul. Petefi Šandora 86<br>21000 Novi Sad
+        </span>
+      </div>
+
+      <div class="contact-info-item reveal">
+        <span class="ci-lbl">Telefon</span>
+        <span class="ci-val">
+          <a href="tel:+381641382474">064 138 24 74</a>
+        </span>
+      </div>
+
+      <div class="contact-info-item reveal">
+        <span class="ci-lbl">Email</span>
+        <span class="ci-val">
+          <a href="mailto:katjakalaba@gmail.com">katjakalaba@gmail.com</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <form class="cform reveal" onsubmit="handleSubmit(event)">
+      <div class="cfield">
+        <label>Vaše ime</label>
+        <input type="text" placeholder="Unesite ime i prezime" required>
+      </div>
+      <div class="cfield">
+        <label>Telefon</label>
+        <input type="tel" placeholder="Vaš broj telefona" required>
+      </div>
+      <div class="cfield">
+        <label>Usluga</label>
+        <select required>
+          <option value="" disabled selected>Izaberite uslugu</option>
+          <option>Šišanje & Oblikovanje</option>
+          <option>Bojenje & Pramenovi</option>
+          <option>Nega & Tretmani</option>
+          <option>Drugo</option>
+        </select>
+      </div>
+      <div class="cfield">
+        <label>Poruka (Opciono)</label>
+        <textarea rows="3" placeholder="Željeni termin ili napomena..."></textarea>
+      </div>
+      <button type="submit" class="csubmit">Pošalji poruku</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Creative Katja</div>
+    <div class="footer-copy">© 2026 · Katja Kalaba · Novi Sad</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/katjusha_creative/" target="_blank">Instagram</a>
+    <a href="https://maps.app.goo.gl/1ookVX36BZD2sLj77" target="_blank">Google Maps</a>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Form handler
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.csubmit');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = 'Poslato ✓';
+  btn.style.background = '#1A1A1A';
+  setTimeout(() => {
+    btn.innerHTML = originalText;
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+</body>
+</html>
